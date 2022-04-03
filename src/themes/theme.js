@@ -9,11 +9,16 @@ export const themeOptions = createTheme({
     },
     secondary: {
       main: '#fcbe84',
-      menu: '#e4e5eb'
+      disabled: '#fee5ce',
+      menu: '#e4e5eb',
     },
     text: {
       primary: '#171d2f',
-      secondary: '#a2a8ba'
+      secondary: '#a2a8ba',
+      paragraph: '#d4d5d9',
+    },
+    error: {
+      main: '#ff7777',
     }
   }
 })

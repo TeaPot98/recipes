@@ -62,7 +62,7 @@ const CustomAppBar = styled(AppBar)(({ theme }) => ({
 
 const TopBar = () => {
   return (
-    <Box sx={{ flexGrow: 1 }}>
+    <Box>
       <CustomAppBar position="static" elevation={0}>
         <Toolbar
           sx={{
