@@ -20,10 +20,14 @@ const RecipeReviews = ({ recipe }) => {
   const styles = {
     container: {
       p: 2,
+      display: 'flex',
+      flexDirection: 'column',
+      overflow: 'hidden'
     },
     reviewsContainer: {
       display: 'flex',
       flexDirection: 'column',
+      overflowY: 'auto',
       gap: 4,
       mt: 4
     },

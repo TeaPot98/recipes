@@ -165,6 +165,7 @@ const RecipeIngredients = ({ recipe, quantity, subtractServing, addServing }) =>
           px: 2,
           display: 'flex',
           flexDirection: 'column',
+          flexWrap: 'nowrap',
           overflowY: 'auto'
         }}
       >

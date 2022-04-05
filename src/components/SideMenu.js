@@ -30,6 +30,7 @@ import PublicIcon from '@mui/icons-material/Public'
 
 import RecipeIngredients from './RecipeIngredients'
 import RecipeReviews from './RecipeReviews'
+import RecipeGallery from './RecipeGallery'
 
 const SideMenuWrapper = styled('div')(({ theme }) => ({
   // width: '500px',
@@ -102,6 +103,8 @@ const SideMenu = ({ recipes }) => {
         />
       case 1:
         return <RecipeReviews recipe={recipe} />
+      case 2:
+        return <RecipeGallery recipe={recipe} />
       default:
         return null
     }
@@ -120,7 +123,8 @@ const SideMenu = ({ recipes }) => {
       >
         <Box
           sx={{
-            p: 6,
+            px: 6,
+            pt: 6,
             display: 'flex',
             flexDirection: 'column',
             overflow: 'hidden'
