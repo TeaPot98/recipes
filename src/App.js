@@ -1,17 +1,22 @@
 import React from 'react'
 import { styled, ThemeProvider } from '@mui/material/styles'
-import { Routes, Route } from 'react-router-dom'
+import {
+  Box,
+} from '@mui/material'
+import { Routes, Route, useLocation } from 'react-router-dom'
 import { themeOptions } from './themes/theme'
 
 import TopBar from './components/TopBar'
-import SideMenu from './components/SideMenu'
+import HomePage from './components/HomePage'
+import HomeSideMenu from './components/HomeSideMenu'
+import RecipeSideMenu from './components/RecipeSideMenu'
 import RecipeDetails from './components/RecipeDetails'
 import recipes from './recipes'
+import categories from './categories'
 
 const AppContainer = styled('div')(({ theme }) => ({
-  display: 'grid',
-  gridTemplateColumns: '1fr 500px',
-  gridTemplateRows: '100vh',
+  display: 'flex',
+  height: '100vh',
   // justifyContent: 'start',
   // alignItems: 'start',
   // alignItems: 'stretch',
@@ -27,13 +32,10 @@ const AppContent = styled('div')(({ theme }) => ({
   justifyContent: 'start',
   overflow: 'hidden',
   alignSelf: 'stretch',
-  // height: '100vh'
-  // maxHeight: '100vh', // Change this later. May lead to unexpected effects
-  // display: 'inline-flex',
-
 }))
 
 const App = () => {
+  
   return (
     <ThemeProvider theme={themeOptions}>
       <AppContainer className="App">
@@ -44,12 +46,20 @@ const App = () => {
               path="/:id"
               element={<RecipeDetails recipes={recipes} />}
             />
+            <Route 
+              path="/"
+              element={<HomePage recipes={recipes} categories={categories} />}
+            />
           </Routes>
         </AppContent>
         <Routes>
           <Route 
             path="/:id"
-            element={<SideMenu recipes={recipes} />}
+            element={<RecipeSideMenu recipes={recipes} />}
+          />
+          <Route
+            path="/"
+            element={<HomeSideMenu />}
           />
         </Routes>
         {/* <SideMenu />  */}

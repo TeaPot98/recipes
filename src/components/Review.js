@@ -37,7 +37,7 @@ const Review = ({ review }) => {
       color: theme => theme.palette.text.primary,
     },
     comment: {
-      color: theme => theme.palette.text.primary
+      color: theme => theme.palette.text.primary,
     },
     ratingEmpty: {
       mr: 1,

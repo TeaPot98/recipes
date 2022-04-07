@@ -16,7 +16,7 @@ const RecipeDetails = ({ recipes }) => {
     container: {
       display: 'flex',
       flexDirection: 'column',
-      justifyContent: 'start',
+      justifyContent: 'center',
       p: 6,
       flex: 1,
       // height: '100%',
@@ -42,11 +42,14 @@ const RecipeDetails = ({ recipes }) => {
       color: theme => theme.palette.secondary.main
     },
     method: {
-      color: 'white'
+      color: 'white',
+      mb: 3,
     },
     steps: {
       overflowY: 'auto',
       // height: '300px'
+      maskImage: 'linear-gradient(to bottom, black 90%, transparent 100%)',
+      WebkitMaskImage: 'linear-gradient(to bottom, black 90%, transparent 100%)',
     },
     stepContainer: {
       display: 'flex',
@@ -63,6 +66,18 @@ const RecipeDetails = ({ recipes }) => {
       fontSize: '0.8rem',
       letterSpacing: '3px'
       // textOrientation: 'sideways'
+    },
+    backgroundImage: {
+      objectFit: 'cover',
+      position: 'absolute',
+      top: 0,
+      left: 0,
+      zIndex: -110,
+      // display: 'absolute',
+      height: '100vh',
+      width: '100vw',
+      maskImage: 'linear-gradient(to bottom, black 5%, transparent 50%)',
+      WebkitMaskImage: 'linear-gradient(to bottom, black 5%, transparent 50%)',
     }
   }
   
@@ -70,6 +85,11 @@ const RecipeDetails = ({ recipes }) => {
     <Box
       sx={styles.container}
     >
+      <Box 
+        component="img" 
+        style={styles.backgroundImage}
+        src="https://www.eatthis.com/wp-content/uploads/sites/4/2019/06/deep-dish-pizza-chicago.jpg"
+      />
       <Typography
         sx={{
           textTransform: 'uppercase',
