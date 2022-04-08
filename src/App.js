@@ -7,10 +7,15 @@ import { Routes, Route, useLocation } from 'react-router-dom'
 import { themeOptions } from './themes/theme'
 
 import TopBar from './components/TopBar'
+import SideBar from './components/SideBar'
 import HomePage from './components/HomePage'
+import SavedRecipes from './components/SavedRecipes'
 import HomeSideMenu from './components/HomeSideMenu'
 import RecipeSideMenu from './components/RecipeSideMenu'
 import RecipeDetails from './components/RecipeDetails'
+import Recipes from './components/Recipes'
+
+import user from './user'
 import recipes from './recipes'
 import categories from './categories'
 
@@ -39,6 +44,7 @@ const App = () => {
   return (
     <ThemeProvider theme={themeOptions}>
       <AppContainer className="App">
+        <SideBar />
         <AppContent>
           <TopBar />
           <Routes>
@@ -50,6 +56,10 @@ const App = () => {
               path="/"
               element={<HomePage recipes={recipes} categories={categories} />}
             />
+            <Route
+              path="/saved"
+              element={<SavedRecipes recipes={recipes} user={user} />}
+            />
           </Routes>
         </AppContent>
         <Routes>
@@ -60,6 +70,10 @@ const App = () => {
           <Route
             path="/"
             element={<HomeSideMenu />}
+          />
+          <Route
+            path="/saved"
+            element={<></>}
           />
         </Routes>
         {/* <SideMenu />  */}

@@ -5,7 +5,7 @@ import {
 
 import Recipe from './Recipe'
 
-const Recipes = ({ recipes}) => {
+const Recipes = ({ recipes, overflow }) => {
 
   const styles = {
     container: {
@@ -15,6 +15,7 @@ const Recipes = ({ recipes}) => {
       gap: 4,
       // overflowY: 'auto',
       flex: 1,
+      overflow: {overflow}
       // m: 6,
       // height: '100%',
     }
