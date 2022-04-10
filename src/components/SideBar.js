@@ -9,7 +9,7 @@ import BookmarkIcon from '@mui/icons-material/Bookmark';
 
 const SideBar = () => {
   const location = useLocation()
-  console.log(location)
+  // console.log(location)
 
   const styles = {
     container: {

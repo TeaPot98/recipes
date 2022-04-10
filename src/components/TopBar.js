@@ -1,4 +1,4 @@
-import React from 'react'
+import React, {useState } from 'react'
 import { styled, alpha } from '@mui/material/styles';
 import {
   Box,
@@ -8,10 +8,14 @@ import {
   Typography,
   InputBase,
   Stack,
+  Button,
 } from '@mui/material'
 import MenuIcon from '@mui/icons-material/Menu';
 import SearchIcon from '@mui/icons-material/Search';
+import AddIcon from '@mui/icons-material/Add'
 
+import { addNewRecipe } from '../services/firebase'
+import RecipeFormDialog from './RecipeFormDialog'
 
 const Search = styled('div')(({ theme }) => ({
   position: 'relative',
@@ -61,6 +65,32 @@ const CustomAppBar = styled(AppBar)(({ theme }) => ({
 }))
 
 const TopBar = () => {
+  const [openRecipeForm, setOpenRecipeForm] = useState(false)
+
+  const openRecipeFormDialog = () => {
+    setOpenRecipeForm(true)
+  }
+
+  const handleRecipeFormClose = () => {
+    setOpenRecipeForm(false)
+    console.log('The recipe form dialog is closed!')
+  }
+  
+  const styles = {
+    addButton: {
+      // color: theme => theme.palette.text.secondary,
+      color: theme => theme.palette.secondary.main,
+
+      textTransform: 'none',
+      fontSize: '1rem',
+      display: 'flex',
+      gap: 1
+    },
+    addButtonIcon: {
+      color: theme => theme.palette.secondary.main
+    }
+  }
+  
   return (
     <Box>
       <CustomAppBar position="static" elevation={0}>
@@ -108,6 +138,17 @@ const TopBar = () => {
               />
             </Search>
           </Box>
+          <Button
+            sx={styles.addButton}
+            onClick={openRecipeFormDialog}
+          >
+            <AddIcon 
+              sx={styles.addButtonIcon}
+              fontSize="small"
+            />
+            Add New Recipe
+          </Button>
+          <RecipeFormDialog open={openRecipeForm} onClose={handleRecipeFormClose} />
         </Toolbar>
       </CustomAppBar>
     </Box>
