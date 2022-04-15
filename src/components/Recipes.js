@@ -15,7 +15,8 @@ const Recipes = ({ recipes, overflow }) => {
       gap: 4,
       // overflowY: 'auto',
       flex: 1,
-      overflow: {overflow}
+      overflow: {overflow},
+      width: '100%',
       // m: 6,
       // height: '100%',
     }

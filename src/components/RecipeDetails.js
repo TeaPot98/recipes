@@ -16,17 +16,52 @@ const RecipeDetails = ({ recipes }) => {
     container: {
       display: 'flex',
       flexDirection: 'column',
-      justifyContent: 'center',
-      p: 6,
+      height: '100%',
+      p: {xs: 2, lg: 6},
       flex: 1,
-      // height: '100%',
-      overflow: 'hidden'
+      overflowY: 'hidden',
+      // [theme.breakpoints.down('lg')]: {
+      //   p: 2
+      // }
+    },
+    mainCategory: {
+      textTransform: 'uppercase',
+      color: theme => theme.palette.secondary.main,
+      fontFamily: 'Campton',
+    },
+    recipeHeading: {
+      display: 'flex',
+      justifyContent: 'space-between',
+    },
+    largeTopImage: {
+      zIndex: 5000,
+      position: 'absolute',
+      height: '250px',
+      top: 10,
+      right: -50,
+    },
+    largeTopImageContainer: {
+      zIndex: 5000,
+      position: 'relative',
+      display: { xs: 'none', lg: 'block' }
+    },
+    smallTopImage: {
+      display: 'block',
+      width: '80%',
+      marginLeft: 'auto',
+      marginRight: 'auto',
+      marginTop: '1rem',
+      marginBottom: '1rem',
+    },
+    smallTopImageContainer: {
+      display: {xs: 'block', lg: 'none'},
     },
     title: {
-      color: 'white'
+      color: 'white',
+      fontFamily: 'Blacker',
     },
     ratingContainer: {
-      my: 5,
+      my: {xs: 2, lg: 5},
       display: 'flex',
       gap: 1.5
     },
@@ -47,9 +82,23 @@ const RecipeDetails = ({ recipes }) => {
     },
     steps: {
       overflowY: 'auto',
-      // height: '300px'
-      maskImage: 'linear-gradient(to bottom, black 90%, transparent 100%)',
-      WebkitMaskImage: 'linear-gradient(to bottom, black 90%, transparent 100%)',
+      pr: 2,
+      // height: '100%',
+      // maskImage: 'linear-gradient(to bottom, black 90%, transparent 100%)',
+      // WebkitMaskImage: 'linear-gradient(to bottom, black 90%, transparent 100%)',
+      '&::-webkit-scrollbar': {
+        width: '0.4em',
+        backgroundColor: theme => theme.palette.primary.main,
+        borderRadius: 5,
+      },
+      '&::-webkit-scrollbar-track': {
+        boxShadow: 'inset 0 0 6px rgba(0,0,0,0.00)',
+        webkitBoxShadow: 'inset 0 0 6px rgba(0,0,0,0.00)'
+      },
+      '&::-webkit-scrollbar-thumb': {
+        backgroundColor: theme => theme.palette.secondary.main,
+        borderRadius: 5
+      }
     },
     stepContainer: {
       display: 'flex',
@@ -65,7 +114,6 @@ const RecipeDetails = ({ recipes }) => {
       color: theme => theme.palette.secondary.main,
       fontSize: '0.8rem',
       letterSpacing: '3px'
-      // textOrientation: 'sideways'
     },
     backgroundImage: {
       objectFit: 'cover',
@@ -76,91 +124,120 @@ const RecipeDetails = ({ recipes }) => {
       // display: 'absolute',
       height: '100vh',
       width: '100vw',
-      maskImage: 'linear-gradient(to bottom, black 5%, transparent 50%)',
-      WebkitMaskImage: 'linear-gradient(to bottom, black 5%, transparent 50%)',
+      // maskImage: 'linear-gradient(to bottom, black 5%, transparent 50%)',
+      // WebkitMaskImage: 'linear-gradient(to bottom, black 5%, transparent 50%)',
     }
   }
   
   return (
-    <Box
-      sx={styles.container}
-    >
-      <Box 
-        component="img" 
-        style={styles.backgroundImage}
-        src="https://www.eatthis.com/wp-content/uploads/sites/4/2019/06/deep-dish-pizza-chicago.jpg"
-      />
-      <Typography
-        sx={{
-          textTransform: 'uppercase',
-          color: theme => theme.palette.secondary.main
-        }}
-      >
-        Main Course
-      </Typography>
-      <Typography
-        component="h1"
-        variant="h3"
-        sx={styles.title}
-      >
-        {recipe.title}
-      </Typography>
+    <>
       <Box
-        sx={styles.ratingContainer}
+        sx={styles.largeTopImageContainer}
       >
-        <Rating 
-          name="read-only-rating" 
-          defaultValue={recipe.rating} 
-          precision={0.1}
-          icon={
-            <StarIcon 
-              fontSize="small"
-              sx={styles.ratingFilled}
-            />
-          }
-          emptyIcon={
-            <StarIcon 
-              fontSize="small"
-              sx={styles.ratingEmpty}
-            />
-          }
-          readOnly 
+        <img 
+          src="https://purepng.com/public/uploads/large/purepng.com-noodlenoodlechinesestaple-foodwheat-doughnudel-1411527963643z8uvx.png"
+          alt="Recipe"
+          style={styles.largeTopImage}
         />
-        <Typography
-          sx={styles.ratingText}
-        >
-          {`${recipe.rating} out of 5`}
-        </Typography>
       </Box>
-      <Typography
-        component="h3"
-        variant="h5"
-        sx={styles.method}
-      >
-        Method
-      </Typography>
       <Box
-        sx={styles.steps}
+        sx={styles.container}
       >
-        {recipe.steps.map((s, i) => 
-          <Box
-            key={i}
-            sx={styles.stepContainer}
-          >
+        <Box sx={styles.smallTopImageContainer}>
+          <img 
+            src="https://purepng.com/public/uploads/large/purepng.com-noodlenoodlechinesestaple-foodwheat-doughnudel-1411527963643z8uvx.png"
+            alt="Recipe"
+            style={styles.smallTopImage}
+          />
+        </Box>
+        <Box
+          sx={styles.recipeHeading}
+        >
+          <Box>
             <Typography
-              sx={styles.stepNumber}
+              sx={styles.mainCategory}
             >
-              Step {i + 1}
+              Main Course
             </Typography>
             <Typography
-              // paragraph
+              component="h1"
+              variant="h3"
+              sx={styles.title}
             >
-              {s}
+              {recipe.title}
             </Typography>
+            <Box
+              sx={styles.ratingContainer}
+            >
+              <Rating 
+                name="read-only-rating" 
+                defaultValue={recipe.rating} 
+                precision={0.1}
+                icon={
+                  <StarIcon 
+                    fontSize="small"
+                    sx={styles.ratingFilled}
+                  />
+                }
+                emptyIcon={
+                  <StarIcon 
+                    fontSize="small"
+                    sx={styles.ratingEmpty}
+                  />
+                }
+                readOnly 
+              />
+              <Typography
+                sx={styles.ratingText}
+              >
+                {`${recipe.rating} out of 5`}
+              </Typography>
+            </Box>
           </Box>
-        )}
+          <Box sx={{ 
+            width: '300px',
+            display: { lg: 'block', md: 'none', sm: 'none', xs: 'none'}
+          }} />
+          {/* <Box
+            sx={styles.largeTopImageContainer}
+          >
+            <img 
+              src="https://purepng.com/public/uploads/large/purepng.com-noodlenoodlechinesestaple-foodwheat-doughnudel-1411527963643z8uvx.png"
+              alt="Recipe"
+              style={styles.largeTopImage}
+            />
+          </Box> */}
+        </Box>
+        <Typography
+          component="h3"
+          variant="h5"
+          sx={styles.method}
+        >
+          Method
+        </Typography>
+        <Box
+          sx={styles.steps}
+        >
+          {recipe.steps.map((s, i) => 
+            <Box
+              key={i}
+              sx={styles.stepContainer}
+            >
+              <Typography
+                sx={styles.stepNumber}
+              >
+                Step {i + 1}
+              </Typography>
+              <Typography
+                // paragraph
+              >
+                {s}
+              </Typography>
+            </Box>
+          )}
+        </Box>
       </Box>
-    </Box>
+    </>
   )
 }
 

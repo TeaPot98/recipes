@@ -4,29 +4,43 @@ import MuiBottomNavigationAction from '@mui/material/BottomNavigationAction'
 
 
 export const SideMenuWrapper = styled('div')(({ theme }) => ({
-  minWidth: '500px',
-  width: '500px',
-  p: 1,
-  m: 1,
+  [theme.breakpoints.up('lg')]: {
+    maxWidth: '500px',
+    minWidth: '500px',
+  },
+  // p: 1,
+  // m: 1,
+  [theme.breakpoints.down('lg')]: {
+    // width: 'auto'
+    // minWidth: 'none',
+    // width: '100vw',
+    maxWidth: '1000px',
+    maxHeight: '100vh',
+  },
+  // zIndex: -1000,
   display: 'flex',
   flexDirection: 'column',
-  overflow: 'hidden'
+  // overflow: 'hidden'
 }))
 
 export const SideMenuContainer = styled('div')(({ theme }) => ({
+  [theme.breakpoints.up('lg')]: {
+    maxWidth: '500px',
+  },
   display: 'flex',
   flexDirection: 'column',
   backgroundColor: 'white',
+  // zIndex: -1000,
   // minWidth: '300px',
   height: '100%',
   borderRadius: 55,
-  overflow: 'hidden',
+  // overflow: 'hidden',
 }))
 
 export const BottomNavigationAction = styled(MuiBottomNavigationAction)(({ theme }) => ({
   color: theme.palette.text.primary,
   paddingTop: '10px',
-  minWidth: '50px',
+  minWidth: '20px',
   maxWidth: '80px',
   height: '50px',
   borderRadius: theme.spacing(1.5),
@@ -43,7 +57,7 @@ export const BottomNavigation = styled(MuiBottomNavigation)(({ theme }) => ({
   borderRadius: 100,
   margin: theme.spacing(1),
   minHeight: '100px',
-  padding: theme.spacing(0, 8, 0, 8),
-  gap: theme.spacing(2),
+  padding: theme.spacing(0, 1, 0, 1),
+  gap: theme.spacing(0),
   alignItems: 'center',
 }))

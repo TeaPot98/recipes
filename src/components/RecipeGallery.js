@@ -21,6 +21,9 @@ const RecipeGallery = ({ recipe }) => {
       display: 'flex',
       justifyContent: 'space-between',
     },
+    title: {
+      fontFamily: 'Blacker'
+    },
     uploadButton: {
       color: theme => theme.palette.text.secondary,
       textTransform: 'none',
@@ -31,6 +34,23 @@ const RecipeGallery = ({ recipe }) => {
     uploadButtonIcon: {
       color: theme => theme.palette.secondary.main,
 
+    },
+    galleryContainer: {
+      pr: 2,
+      '&::-webkit-scrollbar': {
+        width: '0.4em',
+        backgroundColor: theme => theme.palette.secondary.menu,
+        borderRadius: 5,
+      },
+      '&::-webkit-scrollbar-track': {
+        boxShadow: 'inset 0 0 6px rgba(0,0,0,0.00)',
+        webkitBoxShadow: 'inset 0 0 6px rgba(0,0,0,0.00)'
+      },
+      '&::-webkit-scrollbar-thumb': {
+        backgroundColor: theme => theme.palette.text.secondary,
+        borderRadius: 5
+        // outline: '1px solid slategrey'
+      }
     },
     photo: {
       aspectRatio: '1 / 1',
@@ -50,6 +70,7 @@ const RecipeGallery = ({ recipe }) => {
             variant="h5"
             component="p"
             color="text.primary"
+            sx={styles.title}
             // gutterBottom={true}
           >
             Photos

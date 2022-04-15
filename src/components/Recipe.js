@@ -1,40 +1,62 @@
 import React from 'react'
 import { Link } from 'react-router-dom'
 import {
-  Box,
   ImageListItem,
   ImageListItemBar,
   Stack,
   Chip,
   Typography,
 } from '@mui/material'
+import { useTheme } from '@emotion/react'
 
 const Recipe = ({ recipe }) => {
+  const theme = useTheme()
+  
   const styles = {
     container: {
       overflow: 'hidden',
       height: '300px',
       borderRadius: 4,
       backgroundColor: theme => theme.palette.secondary.main,
-      "&:nth-of-type(6n+1), &:nth-of-type(6n+3)": {
-        // flex: 1,
-        // position: 'relative',
-        width: '38%',
+      [theme.breakpoints.up('lg')]: {
+        "&:nth-of-type(6n+1), &:nth-of-type(6n+3)": {
+          // flex: 1,
+          // position: 'relative',
+          width: '36%',
+        },
+        "&:nth-of-type(6n+2)": {
+          // flex: 2,
+          // position: 'relative',
+          width: '15%',
+        },
+        "&:nth-of-type(6n+4), &:nth-of-type(6n+6)": {
+          // flex: 2,
+          // position: 'relative',
+          width: '20%',
+        },
+        "&:nth-of-type(6n+5)": {
+          // flex: 2,
+          // position: 'relative',
+          width: '45%',
+        },
       },
-      "&:nth-of-type(6n+2)": {
-        // flex: 2,
-        // position: 'relative',
-        width: '18%',
+      [theme.breakpoints.up('md')]: {
+        "&:nth-of-type(4n+1), &:nth-of-type(4n+4)": {
+          // flex: 1,
+          // position: 'relative',
+          width: '63%',
+        },
+        "&:nth-of-type(4n+2), &:nth-of-type(4n+3)": {
+          // flex: 2,
+          // position: 'relative',
+          width: '30%',
+        },
+        "&:nth-last-of-type(1)": {
+          width: '97%'
+        }
       },
-      "&:nth-of-type(6n+4), &:nth-of-type(6n+6)": {
-        // flex: 2,
-        // position: 'relative',
-        width: '23%',
-      },
-      "&:nth-of-type(6n+5)": {
-        // flex: 2,
-        // position: 'relative',
-        width: '48%',
+      [theme.breakpoints.up('xs')]: {
+        width: '100%'
       }
     },
     itemBar: {

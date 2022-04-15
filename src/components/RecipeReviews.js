@@ -22,18 +22,39 @@ const RecipeReviews = ({ recipe }) => {
       p: 2,
       display: 'flex',
       flexDirection: 'column',
-      overflow: 'hidden'
+      overflow: 'hidden',
+      // maxHeight: '80vh',
     },
     reviewsContainer: {
       display: 'flex',
       flexDirection: 'column',
       overflowY: 'auto',
       gap: 4,
-      mt: 4
+      mt: 4,
+      pr: 2,
+      '&::-webkit-scrollbar': {
+        width: '0.4em',
+        backgroundColor: theme => theme.palette.secondary.menu,
+        borderRadius: 5,
+      },
+      '&::-webkit-scrollbar-track': {
+        boxShadow: 'inset 0 0 6px rgba(0,0,0,0.00)',
+        webkitBoxShadow: 'inset 0 0 6px rgba(0,0,0,0.00)'
+      },
+      '&::-webkit-scrollbar-thumb': {
+        backgroundColor: theme => theme.palette.text.secondary,
+        borderRadius: 5
+        // outline: '1px solid slategrey'
+      }
     },
     titleContainer: {
       display: 'flex',
       justifyContent: 'space-between',
+    },
+    title: {
+      flex: 1,
+      // px: theme => theme.spacing(4),
+      fontFamily: 'Blacker'
     },
     sortSelect: {
       color: theme => theme.palette.text.secondary
@@ -54,6 +75,7 @@ const RecipeReviews = ({ recipe }) => {
           variant="h5"
           component="p"
           color="text.primary"
+          sx={styles.title}
           // gutterBottom={true}
         >
           Reviews

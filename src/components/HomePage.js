@@ -2,19 +2,16 @@ import React, { useState } from 'react'
 import {
   Box,
   Typography,
-  Button,
-  Radio,
   FormControl,
   RadioGroup,
-  FormControlLabel,
 } from '@mui/material'
-import RadioButtonUncheckedIcon from '@mui/icons-material/RadioButtonUnchecked';
-import CircleIcon from '@mui/icons-material/Circle';
+import { useTheme } from '@emotion/react'
 
 import Recipes from './Recipes'
 import CategoryButton from './CategoryButton'
 
 const HomePage = ({ recipes, categories }) => {
+  const theme = useTheme()
   const trendRecipes = recipes.filter(r => r.trend)
   const [categoryFilter, setCategoryFilter] = useState("0")
   let recipesToShow = []
@@ -22,10 +19,31 @@ const HomePage = ({ recipes, categories }) => {
     const styles = {
       container: {
         overflow: 'auto',
-        p: 6,
+        py: 6,
+        pl: 6,
+        pr: 3,
+        mr: 3,
         display: 'flex',
         flexDirection: 'column',
-        gap: 3
+        gap: 3,
+        [theme.breakpoints.down('lg')]: {
+          p: 1,
+          m: 1,
+        },
+        '&::-webkit-scrollbar': {
+          width: '0.4em',
+          backgroundColor: theme => theme.palette.primary.main,
+          borderRadius: 5,
+        },
+        '&::-webkit-scrollbar-track': {
+          boxShadow: 'inset 0 0 6px rgba(0,0,0,0.00)',
+          webkitBoxShadow: 'inset 0 0 6px rgba(0,0,0,0.00)',
+        },
+        '&::-webkit-scrollbar-thumb': {
+          backgroundColor: theme => theme.palette.secondary.main,
+          borderRadius: 5
+          // outline: '1px solid slategrey'
+        }
       },
       title: {
         color: 'white'
@@ -33,7 +51,7 @@ const HomePage = ({ recipes, categories }) => {
       categoryButtons: {
         display: 'flex',
         flexWrap: 'wrap',
-        justifyContent: 'start'
+        justifyContent: 'center',
       },
     }
 

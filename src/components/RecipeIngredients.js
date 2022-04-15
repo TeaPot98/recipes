@@ -21,6 +21,17 @@ import PublicIcon from '@mui/icons-material/Public'
 const RecipeIngredients = ({ recipe, quantity, subtractServing, addServing }) => {
 
   const styles = {
+    title: {
+      px: 2,
+      fontFamily: 'Blacker',
+    },
+    infoIcon: {
+      mr: 2,
+      color: theme => theme.palette.text.secondary
+    },
+    infoText: {
+      color: theme => theme.palette.text.primary
+    },
     ingredientName: {
       display: 'inline'
     },
@@ -28,10 +39,57 @@ const RecipeIngredients = ({ recipe, quantity, subtractServing, addServing }) =>
       display: 'inline',
       color: theme => theme.palette.text.secondary
     },
+    servesContainer: {
+      display: 'flex',
+      alignItems: 'center',
+      gap: 2,
+      my: 3,
+      px: 2
+    },
+    servesButton: {
+      backgroundColor: theme => theme.palette.secondary.main,
+      color: 'white',
+      width: '25px',
+      height: '25px',
+      "&:hover": {
+        backgroundColor: theme => theme.palette.secondary.main
+      },
+      "&:disabled": {
+        backgroundColor: theme => theme.palette.secondary.disabled,
+        color: 'white'
+      }
+    },
+    servesIcon: {
+      fontSize: '0.9rem'
+    },
     ingredientsContainer: {
       display: 'flex',
       flexDirection: 'column',
-      overflowY: 'auto'
+      overflowY: 'auto',
+    },
+    ingredientsList: {
+      px: 2,
+      display: 'flex',
+      flexDirection: 'column',
+      flexWrap: 'nowrap',
+      overflowY: 'auto',
+      '&::-webkit-scrollbar': {
+        width: '0.4em',
+        backgroundColor: theme => theme.palette.secondary.menu,
+        borderRadius: 5,
+      },
+      '&::-webkit-scrollbar-track': {
+        boxShadow: 'inset 0 0 6px rgba(0,0,0,0.00)',
+        webkitBoxShadow: 'inset 0 0 6px rgba(0,0,0,0.00)'
+      },
+      '&::-webkit-scrollbar-thumb': {
+        backgroundColor: theme => theme.palette.text.secondary,
+        borderRadius: 5
+        // outline: '1px solid slategrey'
+      }
+    },
+    radioIcon: {
+      color: theme => theme.palette.secondary.main
     }
   }
 
@@ -42,44 +100,29 @@ const RecipeIngredients = ({ recipe, quantity, subtractServing, addServing }) =>
       <List>
         <ListItem>
             <AccessTimeIcon 
-              sx={{
-                mr: 2,
-                color: theme => theme.palette.text.secondary
-              }}
+              sx={styles.infoIcon}
             />
           <ListItemText 
-            primary={recipe.cookingTime} 
-            sx={{
-              color: theme => theme.palette.text.primary
-            }}
+            primary={`${recipe.cookingTime} minutes`} 
+            sx={styles.infoText}
           />
         </ListItem>
         <ListItem>
             <RestaurantMenuOutlinedIcon 
-              sx={{
-                mr: 2,
-                color: theme => theme.palette.text.secondary
-              }}
+              sx={styles.infoIcon}
             />
           <ListItemText 
             primary={`${recipe.calories} kilocalories`} 
-            sx={{
-              color: theme => theme.palette.text.primary
-            }}
+            sx={styles.infoText}
           />
         </ListItem>
         <ListItem>
             <PublicIcon 
-              sx={{
-                mr: 2,
-                color: theme => theme.palette.text.secondary
-              }}
+              sx={styles.infoIcon}
             />
           <ListItemText 
             primary={`${recipe.country}`} 
-            sx={{
-              color: theme => theme.palette.text.primary
-            }}
+            sx={styles.infoText}
           />
         </ListItem>
       </List>
@@ -87,21 +130,13 @@ const RecipeIngredients = ({ recipe, quantity, subtractServing, addServing }) =>
         variant="h5"
         component="p"
         color="text.primary"
-        sx={{
-          px: 2
-        }}
+        sx={styles.title}
         // gutterBottom={true}
       >
         Ingredients
       </Typography>
       <Box
-        sx={{
-          display: 'flex',
-          alignItems: 'center',
-          gap: 2,
-          my: 3,
-          px: 2
-        }}
+        sx={styles.servesContainer}
       >
         <Typography
           variant="subtitle2"
@@ -114,24 +149,10 @@ const RecipeIngredients = ({ recipe, quantity, subtractServing, addServing }) =>
           size="small"
           disabled={quantity === recipe.servings}
           onClick={subtractServing}
-          sx={{
-            backgroundColor: theme => theme.palette.secondary.main,
-            color: 'white',
-            width: '25px',
-            height: '25px',
-            "&:hover": {
-              backgroundColor: theme => theme.palette.secondary.main
-            },
-            "&:disabled": {
-              backgroundColor: theme => theme.palette.secondary.disabled,
-              color: 'white'
-            }
-          }}
+          sx={styles.servesButton}
         >
           <RemoveIcon 
-            sx={{
-              fontSize: '0.9rem'
-            }}
+            sx={styles.servesIcon}
           />
         </IconButton>
         <Typography
@@ -143,31 +164,15 @@ const RecipeIngredients = ({ recipe, quantity, subtractServing, addServing }) =>
         <IconButton
           size="small"
           onClick={addServing}
-          sx={{
-            backgroundColor: theme => theme.palette.secondary.main,
-            color: 'white',
-            width: '25px',
-            height: '25px',
-            "&:hover": {
-              backgroundColor: theme => theme.palette.secondary.main
-            }
-          }}
+          sx={styles.servesButton}
           >
           <AddIcon 
-            sx={{
-              fontSize: '0.9rem'
-            }}
+            sx={styles.servesIcon}
           />
         </IconButton>
       </Box>
       <FormGroup
-        sx={{
-          px: 2,
-          display: 'flex',
-          flexDirection: 'column',
-          flexWrap: 'nowrap',
-          overflowY: 'auto'
-        }}
+        sx={styles.ingredientsList}
       >
         {recipe.ingredients.map((i, index) => 
           <FormControlLabel
@@ -178,9 +183,7 @@ const RecipeIngredients = ({ recipe, quantity, subtractServing, addServing }) =>
                 icon={<RadioButtonUncheckedIcon />}
                 checkedIcon={
                   <CheckCircleIcon 
-                    sx={{
-                      color: theme => theme.palette.secondary.main
-                    }}
+                    sx={styles.radioIcon}
                   />
                 }
               />
@@ -190,7 +193,7 @@ const RecipeIngredients = ({ recipe, quantity, subtractServing, addServing }) =>
                 <Typography
                   sx={styles.ingredientName}
                 >
-                  {`${Math.round(i.quantity * (quantity / recipe.servings))} ${i.name} `}
+                  {`${(i.quantity * (quantity / recipe.servings)).toFixed(2)} ${i.measureUnit} ${i.name} `}
                 </Typography>
                 <Typography
                   sx={styles.ingredientProp}

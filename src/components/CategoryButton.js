@@ -23,6 +23,10 @@ const CategoryButton = ({ value, label, checked }) => {
     },
     radioLabel: {
       textTransform: 'uppercase',
+    },
+    buttonIcon: {
+      fontSize: 10,
+      color: theme => theme.palette.secondary.main
     }
   }
   
@@ -48,10 +52,7 @@ const CategoryButton = ({ value, label, checked }) => {
           }}
         />}
         checkedIcon={<CircleIcon 
-          sx={{
-            fontSize: 10,
-            color: theme => theme.palette.secondary.main
-          }}
+          sx={styles.buttonIcon}
         />}
       />}
     />

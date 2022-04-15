@@ -53,35 +53,37 @@ const RecipeSideMenu = ({ recipes }) => {
         return null
     }
   }
+
+  const styles = {
+    wrapper: {
+      p: 1
+    },
+    container: {
+      overflow: 'hidden'
+    },
+    contentContainer: {
+      px: 6,
+      pt: 6,
+      display: 'flex',
+      flexDirection: 'column',
+      justifyContent: 'space-between',
+      overflow: 'hidden',
+      height: '100%'
+    },
+  }
   
   return (
     <SideMenuWrapper
-      sx={{
-        p: 1
-      }}
+      sx={styles.wrapper}
     >
       <SideMenuContainer
-        sx={{
-          overflow: 'hidden'
-        }}
+        sx={styles.container}
       >
         <Box
-          sx={{
-            px: 6,
-            pt: 6,
-            display: 'flex',
-            flexDirection: 'column',
-            overflow: 'hidden'
-          }}
+          sx={styles.contentContainer}
         >
           {sideMenuContent()}
         </Box>
-        <Box 
-          sx={{
-            flex: 1,
-            overflow: 'hidden'
-          }}
-        />
         <BottomNavigation
           value={bottomMenuValue}
           onChange={(event, newValue) => {

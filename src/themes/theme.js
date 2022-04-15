@@ -20,5 +20,8 @@ export const themeOptions = createTheme({
     error: {
       main: '#ff7777',
     }
+  },
+  typography: {
+    fontFamily: 'Campton, Arial, Blacker'
   }
 })

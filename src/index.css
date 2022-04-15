@@ -1,0 +1,19 @@
+@font-face {
+  font-family: 'Blacker';
+  src: url('./fonts/Blacker-Display-Medium-trial.ttf');
+}
+
+@font-face {
+  font-family: 'Campton';
+  src: url('./fonts/CamptonBook.otf') format('opentype');
+}
+
+.fade-enter {
+  opacity: 0;
+  z-index: 1;
+}
+
+.fade-enter.fade-enter-active {
+  opacity: 1;
+  transition: opacity 250ms ease-in-out;
+}
