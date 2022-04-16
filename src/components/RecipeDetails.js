@@ -135,7 +135,7 @@ const RecipeDetails = ({ recipes }) => {
         sx={styles.largeTopImageContainer}
       >
         <img 
-          src="https://purepng.com/public/uploads/large/purepng.com-noodlenoodlechinesestaple-foodwheat-doughnudel-1411527963643z8uvx.png"
+          src={recipe.circleImage}
           alt="Recipe"
           style={styles.largeTopImage}
         />
@@ -145,7 +145,7 @@ const RecipeDetails = ({ recipes }) => {
       >
         <Box sx={styles.smallTopImageContainer}>
           <img 
-            src="https://purepng.com/public/uploads/large/purepng.com-noodlenoodlechinesestaple-foodwheat-doughnudel-1411527963643z8uvx.png"
+            src={recipe.circleImage}
             alt="Recipe"
             style={styles.smallTopImage}
           />

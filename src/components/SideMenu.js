@@ -44,11 +44,21 @@ export const BottomNavigationAction = styled(MuiBottomNavigationAction)(({ theme
   maxWidth: '80px',
   height: '50px',
   borderRadius: theme.spacing(1.5),
+  transition: 'background-color 0.2s ease-in-out',
   '&.Mui-selected': {
     color: theme.palette.text.primary,
     // margin: 'auto',
     paddingTop: '10px',
     backgroundColor: 'white',
+  },
+  '&.Mui-selected:hover': {
+    color: theme.palette.text.primary,
+    // margin: 'auto',
+    paddingTop: '10px',
+    backgroundColor: 'white',
+  },
+  '&:hover': {
+    backgroundColor: theme.palette.text.paragraph
   }
 }))
 
