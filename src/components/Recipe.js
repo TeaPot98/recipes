@@ -15,7 +15,7 @@ const Recipe = ({ recipe }) => {
   const styles = {
     container: {
       overflow: 'hidden',
-      height: '300px',
+      maxHeight: '400px',
       borderRadius: 4,
       backgroundColor: theme => theme.palette.secondary.main,
       [theme.breakpoints.up('lg')]: {
