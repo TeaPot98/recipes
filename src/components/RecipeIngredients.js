@@ -89,7 +89,8 @@ const RecipeIngredients = ({ recipe, quantity, subtractServing, addServing }) =>
       }
     },
     radioIcon: {
-      color: theme => theme.palette.secondary.main
+      color: theme => theme.palette.secondary.main,
+      
     }
   }
 
